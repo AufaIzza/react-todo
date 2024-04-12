@@ -15,7 +15,7 @@ function TodoList() {
                     { todos.map((e) => {
                         if (e.completion === 0) {
                             return(
-                                <Todo key={e.id} todo={e.todo}/>
+                                <Todo key={e.id} todo={e.todo} completion={e.completion}/>
                             )
                         }
                         else {
@@ -28,7 +28,7 @@ function TodoList() {
                     { todos.map((e) => {
                         if (e.completion === 1) {
                             return(
-                                <Todo key={e.id} todo={e.todo}/>
+                                <Todo key={e.id} todo={e.todo} completion={e.completion}/>
                             )
                         } else {
                             return
@@ -40,7 +40,7 @@ function TodoList() {
                     { todos.map((e) => {
                         if (e.completion === 2) {
                             return(
-                                <Todo key={e.id} todo={e.todo}/>
+                                <Todo key={e.id} todo={e.todo} completion={e.completion}/>
                             )
                         } else {
                             return
