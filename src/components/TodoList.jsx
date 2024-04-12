@@ -5,9 +5,23 @@ import { Todo } from "./Todo";
 function TodoList() {
     const [todos, settodos] = useState([])
 
+    function moveTodo(value, id, todo) {
+        for (let i = 0; i < todos.length; i++) {
+            if (todos[i].Id == Number(id)) {
+                todos.splice(i, 1)
+            }
+        }
+        settodos([...todos, {
+            "Id": todo.Id,
+            "todo": todo.todo,
+            "completion": Number(value)
+        }])
+        
+    }
+
     function todo(e) {
         return (
-            <Todo key={e.id} todo={e.todo} completion={e.completion}/>
+            <Todo key={e.Id} todo={e} onChange={(i, id)=>{moveTodo(i.target.value, id, e)}}/>
         )
     }
 
@@ -19,10 +33,11 @@ function TodoList() {
                 <div id="Not-completed" className="TodosDiv">
                     <h2>Not Completed</h2>
                     { todos.map((e) => {
-                        if (e.completion === 0) {
-                            todo(e)
-                        }
-                        else {
+                        if (e.completion === 1) {
+                            return(
+                                todo(e)
+                            )
+                        } else {
                             return
                         }
                     })}
@@ -30,7 +45,7 @@ function TodoList() {
                 <div id="In-progress" className="TodosDiv">
                     <h2>In Progress</h2>
                     { todos.map((e) => {
-                        if (e.completion === 1) {
+                        if (e.completion === 2) {
                             return(
                                 todo(e)
                             )
@@ -42,7 +57,7 @@ function TodoList() {
                 <div id="Completed" className="TodosDiv">
                     <h2>Completed</h2>
                     { todos.map((e) => {
-                        if (e.completion === 2) {
+                        if (e.completion === 3) {
                             return(
                                 todo(e)
                             )
