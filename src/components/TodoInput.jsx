@@ -15,7 +15,7 @@ export function TodoInput(props) {
                     setValue({
                         "id": id,
                         "todo": e.target.value,
-                        "completion": "Not Started"
+                        "completion": 0
                     })
                 }}/>
                 <button type="submit">Add</button>
