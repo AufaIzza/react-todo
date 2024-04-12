@@ -5,27 +5,39 @@ import { Todo } from "./Todo";
 function TodoList() {
     const [todos, settodos] = useState([])
 
-    function completion(value) {
-        if (value == 0) {
-            return "Not Completed"
-        } else if (value == 1) {
-            return "In Progress"
-        } else if (value == 2) {
-            return "Completed"
-        } else {
-            return "Error"
-        }
-    }
-
     return(
         <div className="TodoList">
             <TodoInput sendInput={settodos} getInput={todos}/>
 
-            { todos.map((e) => {
-                return(
-                    <Todo key={e.id} todo={e.todo} completion={completion(e.completion)}/>
-                )
-            })}
+            <div className="Todos">
+                <div id="Not-completed" className="TodosDiv">
+                    <h2>Not Completed</h2>
+                    { todos.map((e) => {
+                        if (e.completion == 0)
+                        return(
+                            <Todo key={e.id} todo={e.todo}/>
+                        )
+                    })}
+                </div>
+                <div id="In-progress" className="TodosDiv">
+                    <h2>In Progress</h2>
+                    { todos.map((e) => {
+                        if (e.completion == 1)
+                        return(
+                            <Todo key={e.id} todo={e.todo}/>
+                        )
+                    })}
+                </div>
+                <div id="Completed" className="TodosDiv">
+                    <h2>Completed</h2>
+                    { todos.map((e) => {
+                        if (e.completion == 2)
+                        return(
+                            <Todo key={e.id} todo={e.todo}/>
+                        )
+                    })}
+                </div>
+            </div>
         </div>
     )
 }

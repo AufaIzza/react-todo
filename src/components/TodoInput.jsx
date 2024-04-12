@@ -5,20 +5,22 @@ export function TodoInput(props) {
     const [id, setId] = useState(0)
     return (
         <div className="TodoInput">
-            <form action="post" onSubmit={(e) => {
+            <form action="post" className="TodoInputForm" onSubmit={(e) => {
                 e.preventDefault()
                 props.sendInput([...props.getInput, value])
                 setId(id + 1)
             }}>
                 <label htmlFor="Input">Input Todo</label>
-                <input type="text" name="Input" id="Input" onChange={(e) => {
-                    setValue({
-                        "id": id,
-                        "todo": e.target.value,
-                        "completion": 0
-                    })
-                }}/>
-                <button type="submit">Add</button>
+                <div className="TodoInputFormInput">
+                    <input type="text" name="Input" id="Input" onChange={(e) => {
+                        setValue({
+                            "id": id,
+                            "todo": e.target.value,
+                            "completion": 0
+                        })
+                    }}/>
+                    <button type="submit">Add</button>
+                </div>
             </form>
         </div>
     )
