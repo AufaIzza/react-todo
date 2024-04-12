@@ -5,6 +5,12 @@ import { Todo } from "./Todo";
 function TodoList() {
     const [todos, settodos] = useState([])
 
+    function todo(e) {
+        return (
+            <Todo key={e.id} todo={e.todo} completion={e.completion}/>
+        )
+    }
+
     return(
         <div className="TodoList">
             <TodoInput sendInput={settodos} getInput={todos}/>
@@ -14,9 +20,7 @@ function TodoList() {
                     <h2>Not Completed</h2>
                     { todos.map((e) => {
                         if (e.completion === 0) {
-                            return(
-                                <Todo key={e.id} todo={e.todo} completion={e.completion}/>
-                            )
+                            todo(e)
                         }
                         else {
                             return
@@ -28,7 +32,7 @@ function TodoList() {
                     { todos.map((e) => {
                         if (e.completion === 1) {
                             return(
-                                <Todo key={e.id} todo={e.todo} completion={e.completion}/>
+                                todo(e)
                             )
                         } else {
                             return
@@ -40,7 +44,7 @@ function TodoList() {
                     { todos.map((e) => {
                         if (e.completion === 2) {
                             return(
-                                <Todo key={e.id} todo={e.todo} completion={e.completion}/>
+                                todo(e)
                             )
                         } else {
                             return
